@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "cheasecrmod"
   gem.homepage = "http://github.com/edmundhighcock/cheasecrmod"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{A module which allows the CHEASE Grad-Shafranov solver to be run using the CodeRunner framework. }
+  gem.description = %Q{A module which allows the CHEASE Grad-Shafranov solver to be run using the CodeRunner framework. }
   gem.email = "edmundhighcock@users.sourceforge.net"
   gem.authors = ["Edmund Highcock"]
   # dependencies defined in Gemfile
