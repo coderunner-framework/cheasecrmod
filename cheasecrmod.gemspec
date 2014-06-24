@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "cheasecrmod.gemspec",
     "lib/cheasecrmod.rb",
     "test/helper.rb",
     "test/test_cheasecrmod.rb"
