@@ -14,7 +14,8 @@ class TestCheasecrmod < Test::Unit::TestCase
     Dir.chdir('test/solovev'){@runner.run_class.use_new_defaults_file("rake_test", "chease_namelist_EXAMPLE.in")}
     #FileUtils.mv('rake_test_defaults.rb', @runner.run_class.rcp.user_defaults_location)
 		if ENV['CHEASE_EXEC']
-      CodeRunner.submit(Y: 'test/solovev', p: '{ap: [0.3,0.5,0.4,0.0,0.4,0.0,0.0], at: [0.3,0.5,0.4,0.0,0.4,0.0,0.0]}',  T: false, D: 'rake_test', n: '1', X: ENV['CHEASE_EXEC'])
+      CodeRunner.submit(Y: 'test/solovev', p: '{ap: [0.3,0.5,0.4,0.0,0.4,0.0,0.0], at: [0.16,1.0,1.0,-1.1,-1.1]}',  T: false, D: 'rake_test', n: '1', X: ENV['CHEASE_EXEC'])
+      CodeRunner.submit(Y: 'test/solovev', p: '{restart_id: 1, nblopt: 1}',  T: false, D: 'rake_test', n: '1', X: ENV['CHEASE_EXEC'])
     FileUtils.rm(@runner.run_class.rcp.user_defaults_location + '/rake_test_defaults.rb')
     FileUtils.rm('test/solovev/rake_test_defaults.rb')
 		FileUtils.rm_r('test/solovev/v')

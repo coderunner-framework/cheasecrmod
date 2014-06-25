@@ -70,9 +70,10 @@ class CodeRunner
 			#@naming_pars.delete(:preamble)
 			#SUBMIT_OPTIONS.each{|v| new_run.set(v, self.send(v)) unless new_run.send(v)}
 			##(rcp.results + rcp.gs2_run_info).each{|result| new_run.set(result, nil)}
-			#new_run.is_a_restart = true
-			#new_run.restart_id = @id
-			#new_run.restart_run_name = @run_name
+			new_run.is_a_restart = true
+			new_run.restart_id = @id
+			new_run.restart_run_name = @run_name
+			new_run.nopt = -1
 			#new_run.init_option = "restart"
 			#new_run.iternt_file = @run_name + ".iternt"
 			#new_run.iterflx_file = @run_name + ".iterflx"
@@ -81,17 +82,15 @@ class CodeRunner
 			#raise "Restart must be on the same number of processors as the previous run: new is #{new_run.nprocs.inspect} and old is #{@nprocs.inspect}" if !new_run.nprocs or new_run.nprocs != @nprocs
 		### 	@runner.parameters.each{|var, value| new_run.set(var,value)} if @runner.parameters
 		###   ep @runner.parameters
-			#new_run.run_name = nil
-			#new_run.naming_pars = @naming_pars
-			#new_run.update_submission_parameters(new_run.parameter_hash.inspect, false) if new_run.parameter_hash 
-			#new_run.naming_pars.delete(:restart_id)
-			#new_run.generate_run_name
+			new_run.run_name = nil
+			new_run.naming_pars = @naming_pars
+			new_run.update_submission_parameters(new_run.parameter_hash.inspect, false) if new_run.parameter_hash 
+			new_run.naming_pars.delete(:restart_id)
+			new_run.generate_run_name
 			#new_run.run_name += '_t'
-			#eputs 'Copying Trinity Restart files', ''
+			eputs 'Copying CHEASE Restart file'
 			##system "ls #@directory"
-			###['iternt', 'iterflx', 'tmp'].each do |ext|
-				###FileUtils.cp("#@directory/#@run_name.#{ext}", "#{new_run.directory}/.")
-			###end
+		  FileUtils.cp("#@directory/NOUT", "#{new_run.directory}/NIN")
 			##########if new_run.flux_option == "gs2" and @flux_option == "gs2"
 				##########for i in 0...n_flux_tubes
 					##########new_run.gs2_runs[i].directory = new_run.directory + "/flux_tube_#{i+1}"
