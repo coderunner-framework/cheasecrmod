@@ -32,6 +32,12 @@ Rake::TestTask.new(:test) do |test|
   test.verbose = true
 end
 
+Rake::TestTask.new(:sync_variables) do |test|
+  test.libs << 'lib' << 'sync_variables'
+  test.pattern = 'sync_variables/sync_variables.rb'
+  test.verbose = true
+end
+
 desc "Code coverage detail"
 task :simplecov do
   ENV['COVERAGE'] = "true"
