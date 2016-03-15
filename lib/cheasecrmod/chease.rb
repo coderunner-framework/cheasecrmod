@@ -10,10 +10,12 @@ class CodeRunner
 
 
 		# Where this file is
-		@code_module_folder = folder = File.dirname(File.expand_path(__FILE__)) # i.e. the directory this file is in
+		@code_module_folder =  File.dirname(File.expand_path(__FILE__)) # i.e. the directory this file is in
 
 		# Use the Run::FortranNamelist tools to process the variable database
 		setup_namelists(@code_module_folder)
+
+    attr_accessor :expeq_in
 			
 		# Setup gs2 in case people are using it
 
@@ -110,6 +112,9 @@ class CodeRunner
 				if @restart_id
 					@runner.run_list[@restart_id].restart(self)
 				end
+        if expeq_in
+          FileUtils.cp(expeq_in, @directory + '/EXPEQ')
+        end
 				write_input_file
 		end
 
